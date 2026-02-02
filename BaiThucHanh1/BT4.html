@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Info Form</title>
     <style>
+        html{
+           border: 20px solid #ccc; 
+        }
         th, td {
             text-align: left;
-            width: 200px;
+            width: 250px;
             height: 25px;
         }
     </style>
 </head>
 <body>
     <form action="">
-        <header><b>Basic Info</b><hr style="margin-top: -3px;"></header>
+        <h3><b>Basic Info</b><hr style="margin-top: -2px;"></h3>
         <table>
             <tr>
                 <th>Employee ID</th>
@@ -25,19 +28,17 @@
                 <td>Dodsworth</td>
             </tr>
             <tr>
-                <tr>
-                    <th rowspan="4">Gender</th> 
-                    <td><input type="radio">Male</td>  
-                </tr>
-                <tr> 
-                    <td><input type="radio">Female</td>  
-                </tr>
-                <tr> 
-                    <td><input type="radio">XXX</td>  
-                </tr>
-                <tr> 
-                    <td><input type="radio">ZZZ</td>  
-                </tr>
+                <th rowspan="4">Gender</th> 
+                <td><input type="radio">Male</td>  
+            </tr>
+            <tr> 
+                <td><input type="radio">Female</td>  
+            </tr>
+            <tr> 
+                <td><input type="radio">XXX</td>  
+            </tr>
+            <tr> 
+                <td><input type="radio">ZZZ</td>  
             </tr>
             <tr>
                 <th>Title</th>
@@ -47,69 +48,111 @@
                 <th>Suffix</th>
                 <td><input type="text" value="Ms."></td>
             </tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
+            <tr>
+                <th>Birth Date</th>
+                <td><input type="datetime-local" value="1994-07-02T00:00:00"> (?)</td> 
+            </tr>
+            <tr>
+                <th>Hire Date</th>
+                <td><input type="datetime-local" value="1994-11-15T00:00:00"></td>
+            </tr>
+            <tr>
+                <th>SSN # (if applicable)</th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th>Report to</th>
+                <td>
+                    <select>
+                        <option value="buchanan" selected>Buchanan</option>
+                        <option value="fuller">Fuller</option>
+                        <option value="leverling">Leverling</option>
+                    </select>
+                </td>
+            </tr>
         </table>
-    </form>
-   
-    
-</body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Info Form</title>
-    <style>
-        th, td {
-            text-align: left;
-            width: 200px;
-            height: 25px;
-        }
-    </style>
-</head>
-<body>
-    <form action="">
-        <header><b>Basic Info</b><hr style="margin-top: -3px;"></header>
+        <h3><b>Contact Info</b><hr style="margin-top: -2px;"></h3>
         <table>
             <tr>
-                <th>Employee ID</th>
-                <td>9</td>
+                <th>Email</th>
+                <td><input type="email" placeholder="name@example.com"></td>
             </tr>
             <tr>
-                <th>Last Name</th>
-                <td>Dodsworth</td>
+                <th>Address</th>
+                <td><input type="text" value="7 Houndstooth Rd."></td>
             </tr>
             <tr>
-                <tr>
-                    <th rowspan="4">Gender</th> 
-                    <td><input type="radio">Male</td>  
-                </tr>
-                <tr> 
-                    <td><input type="radio">Female</td>  
-                </tr>
-                <tr> 
-                    <td><input type="radio">XXX</td>  
-                </tr>
-                <tr> 
-                    <td><input type="radio">ZZZ</td>  
-                </tr>
+                <th>City</th>
+                <td><input type="text" value="London"></td>
             </tr>
             <tr>
-                <th>Title</th>
-                <td><input type="text" name="" id="" value="Sales Representative"></td>
+                <th>Region</th>
+                <td><input type="text" value=""></td>
             </tr>
             <tr>
-                <th>Suffix</th>
-                <td><input type="text" value="Ms."></td>
+                <th>Postal Code</th>
+                <td><input type="text" value="WG2 7LT"></td>
             </tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
+            <tr>
+                <th>Country</th>
+                <td>
+                    <select name="country" id="country">
+                        <option value="ru" selected>Russian Federation</option>
+                        <option value="us">United States</option>
+                        <option value="fr">France</option>
+                        <option value="de">Germany</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>US Home Phone</th>
+                <td><input type="tel" value="(234)234-2342"></td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td><input type="file" accept="image/*"></td>
+            </tr>
         </table>
+        <h3><b>Optional Info</b><hr style="margin-top: -2px;"></h3>
+        <table>
+            <tr>
+                <th>Notes</th>
+                <td> <textarea name="notes" rows="6" cols="50">Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German ZZZ</textarea></td>
+            </tr>
+            <tr>
+                <th rowspan="2">Preferred Shift</th>
+                <td><input type="checkbox" name="shift" id="regular"><label for="regular">Regular</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="shift" id="gravy" checked><label for="gravy">Gravy Yard</label></td>
+            </tr>
+            <tr>
+                <th>Active?</th>
+                <td><input type="checkbox" name="active" id="active" checked></td>
+            </tr>
+            <tr>
+                <th rowspan="2">Are you human?</th>
+                <td>
+                    <div style="background-color: #f0f0f0; padding: 10px; border: 1px solid #ccc; display: inline-block;">
+                        <span style="font-size: 24px; letter-spacing: 5px; font-family: monospace; color: #666;">TIDANO</span>
+                    </div>
+                    <br>
+                    <input type="button" style="align-items: center;" value="Click to change" onclick="changeCaptcha()"></td>
+                    <br>
+            </tr>
+            <tr>
+                <td><input type="text" name="captcha" id="captcha" placeholder="Enter the text shown above"></td>
+            </tr>
+        </table>
+        <hr>
+        <tr>
+            <td><input type="submit" id="prevBtn" value="<"></td>
+            <td><input type="submit" id="nextBtn" value=">"></td>
+            <td><input type="submit" value="Save"></td>
+            <td><input type="button" value="x Cancel"></td>
+        </tr>
+        <br>
+        <p important="true">* Required</p>
     </form>
    
     
