@@ -13,6 +13,7 @@
             box-sizing: border-box;
         }
         body {
+            display: ;
             background-color: #e6e6e6;
         }
         nav {
@@ -111,13 +112,167 @@
             color: white
         }
 
-        footer {
-            margin-top: 50px;
-            width: 70%;
-            text-align: center;
-            align-self: center;
-            background-color: #f5f5f5;
-        }
+/* ===== FOOTER (MODAL) - GIỐNG ẢNH MẪU ===== */
+footer{
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 520px;        /* giống popup */
+    margin: 40px auto;   /* căn giữa và nằm dưới */
+    background-color: #fff;
+    border: 2px solid #1e66d0;
+    border-radius: 2px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Header xanh + nút X bên phải */
+.footer-header {
+    background-color: #1e66d0;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-header h1 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+
+.footer-header .close-btn {
+    background: transparent;
+    color: #0b1f3a;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    width: 26px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    line-height: 1;
+}
+
+.footer-header .close-btn:hover {
+    background-color: rgba(255,255,255,0.25);
+}
+
+/* Form body */
+footer form {
+    position: relative;
+    padding: 18px 18px 64px 18px; /* rộng hơn + chừa chỗ cho nút */
+}
+
+/* Table layout 2 cột giống ảnh */
+.Second {
+    width: 100%;
+    max-width: 480px;     /* giúp table nằm gọn ở giữa trong footer 520px */
+    margin: 0 auto;       /* CĂN GIỮA table */
+    border-collapse: collapse;
+    box-shadow: none;
+}
+
+.Second th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 500;
+    color: #222;
+    padding: 10px 0 6px 0;
+    border: none;
+}
+
+.Second td {
+    padding: 0 14px 14px 0;  /* thoáng hơn */
+    border: none;
+    vertical-align: top;
+}
+
+.Second td:last-child {
+    padding-right: 0;
+}
+
+/* Input + Select giống ảnh */
+.Second input[type="text"],
+.Second select {
+    width: 100%;
+    height: 34px;          /* to hơn */
+    padding: 6px 10px;
+    border: 1px solid #d6d6d6;
+    border-radius: 2px;
+    font-size: 13px;
+    background-color: #fff;
+}
+
+.Second input[type="text"]:focus,
+.Second select:focus {
+    outline: none;
+    border-color: #1e66d0;
+}
+
+/* Select có mũi tên như ảnh */
+.Second select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+}
+
+/* Sex (radio) giống ảnh */
+.Second td[style*="display: flex"]{
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start !important;
+    gap: 40px;          /* giãn ra giống ảnh */
+    padding-top: 10px;
+}
+
+.Second input[type="radio"]{
+    width: 13px;
+    height: 13px;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+/* Nút Save/Cancel góc phải dưới giống ảnh */
+footer form > input[type="button"]{
+    position: absolute;
+    bottom: 12px;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Save xanh */
+footer form > input[value="Save"]{
+    right: 78px;
+    background-color: #2e9b5f;
+    color: #fff;
+}
+footer form > input[value="Save"]:hover{
+    background-color: #278653;
+}
+
+/* Cancel xám */
+footer form > input[value="Cancel"]{
+    right: 12px;
+    background-color: #9aa0a6;
+    color: #fff;
+}
+footer form > input[value="Cancel"]:hover{
+    background-color: #7f868c;
+}
+
+
     </style>
 </head>
 <body>
@@ -193,7 +348,10 @@
         </table>
     </main>
     <footer name="Add NewEmployee Demo Visual">
-        <h1>New Employee</h1>
+        <div class="footer-header">
+            <h1>New Employee</h1>
+            <button class="close-btn" onclick="this.closest('footer').style.display='none'">×</button>
+        </div>
         <form action="">
             <table class="Second">
                 <tr>
