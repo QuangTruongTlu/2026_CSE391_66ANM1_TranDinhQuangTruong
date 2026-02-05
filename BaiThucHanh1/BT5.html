@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <header>HR Management</header>
+        <ul>
+            <li>Home</li>
+            <li>Contact</li>
+            <li><input type="text" placeholder="Search..."><button>Search</button></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Employee</h1>
+        <input type="button" value="+Add">
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Position</th>
+                <th rowspan="2">Action</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Fatima Beatriz</td>
+                    <td>Fatiama Beatriz@gmail.com</td>
+                    <td>0985674321</td>
+                    <td>Staff</td>
+                    <td><input type="button" value="Edit"></td>
+                    <td><input type="button" value="Delete"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Gabriel Hanna</td>
+                    <td>Gabriel Hanna@gmail.com</td>
+                    <td>0353674231</td>
+                    <td>Staff</td>
+                    <td><input type="button" value="Edit"></td>
+                    <td><input type="button" value="Delete"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Charles Diya</td>
+                    <td>Charles Diya@gmail.com</td>
+                    <td>0347658833</td>
+                    <td>Staff</td>
+                    <td><input type="button" value="Edit"></td>
+                    <td><input type="button" value="Delete"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Frank Lamdo</td>
+                    <td>Frank Lamdo@gmail.com</td>
+                    <td>0975444768</td>
+                    <td>Manager</td>
+                    <td><input type="button" value="Edit"></td>
+                    <td><input type="button" value="Delete"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Louis Tom</td>
+                    <td>Louis Tom@gmail.com</td>
+                    <td>0789568223</td>
+                    <td>Staff</td>
+                    <td><input type="button" value="Edit"></td>
+                    <td><input type="button" value="Delete"></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer name="Add NewEmployee Demo Visual">
+        <h1>New Employee</h1>
+        <form action="">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <th>Position</th>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td>
+                        <select name="Position" id="">
+                            <option value="">-- Select Position --</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Staff">Staff</option>
+                            <option value="CEO">CEO</option>
+                       </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Sex</th>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="sex">Male<input type="radio" name="sex">Female</td>
+                    <td></td>
+                </tr>
+            </table>
+            <input type="button" value="Save">
+            <input type="button" value="Cancel">
+        </form>
+    </footer>
+</body>
+</html>
