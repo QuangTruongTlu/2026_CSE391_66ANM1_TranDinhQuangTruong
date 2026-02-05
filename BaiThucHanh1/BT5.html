@@ -3,15 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HR Management</title>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav {
+            background-color: #2d3748;
+            color: white;
+            padding: 12px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 40px;
+        }
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+            flex: 1;
+        }
+        nav ul li {
+            margin: 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        input[type="text"] {
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        nav ul li:last-child {
+            margin-left: auto;
+            display: flex;
+            gap: 8px;
+        }
+        .Search {
+            padding: 6px 12px;
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <header>HR Management</header>
         <ul>
-            <li>Home</li>
-            <li>Contact</li>
-            <li><input type="text" placeholder="Search..."><button>Search</button></li>
+            <li class="Home" style="font-size: 16px;">Home</li>
+            <li class="Contact" style="font-size: 16px;">Contact</li>
+            <li><input type="text" class="SearchBox" placeholder="Search..."><button class="Search">Search</button></li>
         </ul>
     </nav>
     <main>
