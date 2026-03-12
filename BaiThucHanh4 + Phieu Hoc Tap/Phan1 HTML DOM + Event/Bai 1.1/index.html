@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý điểm sinh viên</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f4f7f6; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #2c3e50; }
+        
+        .input-group { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; }
+        input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; outline: none; }
+        button#btn-add { background: #27ae60; color: white; border: none; padding: 8px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: center; }
+        th { background-color: #34495e; color: white; }
+        
+        /* Hàng điểm yếu tô màu vàng */
+        .low-score { background-color: #fff9c4 !important; }
+        
+        .btn-delete { background: #e74c3c; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
+        .summary { margin-top: 15px; padding: 15px; background: #ecf0f1; border-radius: 5px; font-weight: bold; display: flex; justify-content: space-around; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>DANH SÁCH ĐIỂM SINH VIÊN</h2>
+
+    <div class="input-group">
+        <input type="text" id="fullname" placeholder="Họ tên sinh viên" autocomplete="off">
+        <input type="number" id="score" placeholder="Điểm (0-10)" min="0" max="10" step="0.1">
+        <button id="btn-add">Thêm</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Họ tên</th>
+                <th>Điểm</th>
+                <th>Xếp loại</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody id="student-tbody">
+            </tbody>
+    </table>
+
+    <div class="summary">
+        <span>Tổng số SV: <span id="total-sv">0</span></span>
+        <span>Điểm trung bình lớp: <span id="avg-score">0</span></span>
+    </div>
+</div>
+
+<script>
+    // 1. Mảng lưu trữ danh sách sinh viên
+    let students = [];
+
+    const nameInput = document.getElementById('fullname');
+    const scoreInput = document.getElementById('score');
+    const btnAdd = document.getElementById('btn-add');
+    const tbody = document.getElementById('student-tbody');
+
+    // 2. Hàm thêm sinh viên
+    function addStudent() {
+        const name = nameInput.value.trim();
+        const score = parseFloat(scoreInput.value);
+
+        // Kiểm tra dữ liệu hợp lệ
+        if (name === "" || isNaN(score) || score < 0 || score > 10) {
+            alert("Vui lòng nhập họ tên và điểm hợp lệ (0-10)!");
+            return;
+        }
+
+        // Tạo object sinh viên mới
+        const newStudent = { name, score };
+        students.push(newStudent);
+
+        // Sau khi thêm: xóa trắng, focus, render lại bảng
+        nameInput.value = "";
+        scoreInput.value = "";
+        nameInput.focus();
+        renderTable();
+    }
+
+    // 3. Hàm tính xếp loại
+    function getRank(score) {
+        if (score >= 8.5) return "Giỏi";
+        if (score >= 7.0) return "Khá";
+        if (score >= 5.0) return "Trung bình";
+        return "Yếu";
+    }
+
+    // 4. Hàm renderTable() - Vẽ lại toàn bộ bảng
+    function renderTable() {
+        tbody.innerHTML = "";
+        let totalScore = 0;
+
+        students.forEach((sv, index) => {
+            totalScore += sv.score;
+            const rank = getRank(sv.score);
+            const rowClass = sv.score < 5.0 ? "low-score" : "";
+
+            const row = `
+                <tr class="${rowClass}">
+                    <td>${index + 1}</td>
+                    <td>${sv.name}</td>
+                    <td>${sv.score.toFixed(1)}</td>
+                    <td>${rank}</td>
+                    <td><button class="btn-delete" data-index="${index}">Xóa</button></td>
+                </tr>
+            `;
+            tbody.innerHTML += row;
+        });
+
+        // Cập nhật thống kê
+        const totalSV = students.length;
+        document.getElementById('total-sv').textContent = totalSV;
+        document.getElementById('avg-score').textContent = totalSV > 0 ? (totalScore / totalSV).toFixed(2) : 0;
+    }
+
+    // 5. Sự kiện Click nút Thêm
+    btnAdd.addEventListener('click', addStudent);
+
+    // 6. Nhấn Enter ở ô Điểm để thêm
+    scoreInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') addStudent();
+    });
+
+    // 7. Event Delegation trên <tbody> để xử lý xóa
+    tbody.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-delete')) {
+            const index = e.target.getAttribute('data-index');
+            students.splice(index, 1); // Xóa khỏi mảng
+            renderTable(); // Vẽ lại bảng
+        }
+    });
+
+</script>
+
+</body>
+</html>
