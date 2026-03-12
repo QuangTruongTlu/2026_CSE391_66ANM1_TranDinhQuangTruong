@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành JS DOM - Selecting Elements</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; background-color: #f4f4f9; }
+        .container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 600px; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .description { margin: 10px 0; padding: 10px; background: #e8f4fd; border-left: 5px solid #3498db; }
+        .info-box { margin-top: 20px; font-style: italic; color: #666; }
+        button { padding: 10px 20px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #2980b9; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="main-title">Js06 - Select Element</h1>
+        
+        <p class="description">Phần tử danh sách 1 (Class: description)</p>
+        <p class="description">Phần tử danh sách 2 (Class: description)</p>
+        <p class="description">Phần tử danh sách 3 (Class: description)</p>
+        
+        <button id="btn-test">Nút bấm mẫu</button>
+
+        <div class="info-box">
+            * Mở <strong>Console (F12)</strong> để xem kết quả lựa chọn phần tử.
+        </div>
+    </div>
+
+    <script>
+        // Chờ DOM load xong để đảm bảo các phần tử đã tồn tại
+        window.addEventListener('DOMContentLoaded', () => {
+
+            console.log("%c--- THỰC HÀNH SELECTING ELEMENTS ---", "color: blue; font-weight: bold; font-size: 14px;");
+
+            // 1. Sử dụng querySelector để chọn một phần tử bất kỳ [cite: 52, 138]
+            // Chọn phần tử đầu tiên khớp với class .description
+            let firstElement = document.querySelector('.description'); 
+            console.log("1. Kết quả querySelector('.description'):", firstElement);
+
+
+            // 2. Sử dụng querySelectorAll để lấy danh sách các phần tử [cite: 65, 139]
+            // Trả về một NodeList chứa tất cả các phần tử có class .description [cite: 66]
+            let allElements = document.querySelectorAll('.description');
+            console.log("2. Kết quả querySelectorAll('.description'):", allElements);
+            
+            // Thử lặp qua danh sách bằng forEach [cite: 67, 73]
+            allElements.forEach((el, index) => {
+                console.log(`   > Nội dung phần tử ${index + 1}: ${el.textContent}`); // [cite: 91]
+            });
+
+
+            // 3. Sử dụng getElementById để truy cập trực tiếp qua ID [cite: 74, 140]
+            // Phương thức này có hiệu năng cực kỳ nhanh [cite: 76]
+            let titleElement = document.getElementById('main-title');
+            console.log("3. Kết quả getElementById('main-title'):", titleElement);
+
+
+            // 4. Kiểm tra kết quả trong tab Console của DevTools [cite: 141]
+            console.log("%c>>> Tất cả các phần tử đã được log thành công!", "color: green; font-style: italic;");
+        });
+    </script>
+</body>
+</html>
