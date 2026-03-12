@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành JS 07 - Events & Propagation</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f4f7f6; line-height: 1.6; }
+        .container { max-width: 700px; margin: auto; display: flex; flex-direction: column; gap: 20px; }
+        .section { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { color: #2c3e50; font-size: 1.2rem; border-bottom: 2px solid #3498db; padding-bottom: 5px; }
+        
+        /* CSS cho Bubbling */
+        .outer { padding: 30px; background: #e74c3c; color: white; cursor: pointer; }
+        .inner { padding: 20px; background: #f1c40f; color: #333; cursor: pointer; }
+        
+        /* CSS cho Delegation */
+        #dynamic-list { background: #ecf0f1; padding: 15px 40px; border-radius: 5px; list-style: square; }
+        #dynamic-list li { padding: 5px; cursor: pointer; transition: 0.2s; }
+        #dynamic-list li:hover { background: #bdc3c7; color: white; }
+
+        input, button { padding: 8px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc; }
+        button { background: #3498db; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background: #2980b9; }
+        .log { background: #333; color: #00ff00; padding: 10px; font-family: monospace; font-size: 12px; margin-top: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Thực hành JavaScript Events (JS 07)</h1>
+
+    <div class="section">
+        <h2>1 & 2. Click & Keyboard Events</h2>
+        <input type="text" id="key-input" placeholder="Nhập phím bất kỳ...">
+        <button id="click-btn">Click Me!</button>
+        <div id="key-log" class="log">Gõ phím để thấy kết quả...</div>
+    </div>
+
+    <div class="section">
+        <h2>3. Form Submit (No Reload)</h2>
+        <form id="my-form">
+            <input type="text" id="user-input" placeholder="Nhập nội dung..." required>
+            <button type="submit">Gửi Form</button>
+        </form>
+        <div id="form-result" class="log">Kết quả submit sẽ hiện ở đây...</div>
+    </div>
+
+    <div class="section">
+        <h2>4. Event Bubbling (Lan truyền)</h2>
+        <div class="outer" id="outer-box">
+            Thẻ NGOÀI (Outer)
+            <div class="inner" id="inner-box">
+                Thẻ TRONG (Inner) - Click vào tôi!
+            </div>
+        </div>
+        <p style="font-size: 0.8rem; color: #666;">* Xem Console để thấy thứ tự lan truyền.</p>
+    </div>
+
+    <div class="section">
+        <h2>5. Event Delegation (Ủy quyền)</h2>
+        <p>Click vào các dòng dưới đây (Sự kiện gán cho thẻ UL cha):</p>
+        <ul id="dynamic-list">
+            <li>Mục danh sách 1</li>
+            <li>Mục danh sách 2</li>
+            <li>Mục danh sách 3</li>
+        </ul>
+        <div id="delegation-log" class="log">Chưa có mục nào được chọn.</div>
+    </div>
+</div>
+
+<script>
+    // --- 1. Click Event Listener ---
+    const clickBtn = document.getElementById('click-btn');
+    clickBtn.addEventListener('click', () => {
+        alert('Bạn đã click vào nút!');
+    });
+
+    // --- 2. Keyboard Event Listener ---
+    const keyInput = document.getElementById('key-input');
+    const keyLog = document.getElementById('key-log');
+    keyInput.addEventListener('keydown', (event) => {
+        keyLog.textContent = `Phím vừa nhấn: ${event.key} | Code: ${event.code}`;
+    });
+
+    // --- 3. Form Submit & Prevent Default ---
+    const myForm = document.getElementById('my-form');
+    const formResult = document.getElementById('form-result');
+    myForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Ngăn load lại trang
+        const data = document.getElementById('user-input').value;
+        formResult.textContent = `Dữ liệu đã gửi: ${data} (Trang không bị load lại)`;
+    });
+
+    // --- 4. Event Bubbling (Sự lan truyền) ---
+    const outer = document.getElementById('outer-box');
+    const inner = document.getElementById('inner-box');
+
+    outer.addEventListener('click', () => {
+        console.log('Bubbling: Thẻ NGOÀI (Outer) nhận sự kiện');
+    });
+
+    inner.addEventListener('click', (event) => {
+        console.log('Bubbling: Thẻ TRONG (Inner) nhận sự kiện');
+        // Nếu muốn dừng lan truyền, dùng: event.stopPropagation();
+    });
+
+    // --- 5. Event Delegation (Ủy quyền sự kiện) ---
+    const list = document.getElementById('dynamic-list');
+    const delLog = document.getElementById('delegation-log');
+
+    // Gán listener cho thẻ cha (UL) thay vì từng thẻ con (LI)
+    list.addEventListener('click', (event) => {
+        // Kiểm tra xem phần tử thực sự được click có phải là LI không
+        if (event.target.tagName === 'LI') {
+            delLog.textContent = `Bạn vừa chọn: ${event.target.textContent}`;
+            console.log('Delegation: Event captured from UL target:', event.target);
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành JS 07 - Promises</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f0f2f5; line-height: 1.6; }
+        .container { max-width: 700px; margin: auto; display: flex; flex-direction: column; gap: 20px; }
+        .section { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { color: #2c3e50; font-size: 1.1rem; border-bottom: 2px solid #e67e22; padding-bottom: 5px; }
+        
+        button { padding: 10px 15px; background: #e67e22; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-bottom: 10px; }
+        button:hover { background: #d35400; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+
+        .log { background: #2d3436; color: #fab1a0; padding: 15px; font-family: 'Courier New', monospace; font-size: 13px; border-radius: 5px; min-height: 50px; white-space: pre-wrap; }
+        .status { font-weight: bold; color: #2980b9; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Thực hành JavaScript Promises (JS 07)</h1>
+
+    <div class="section">
+        <h2>1, 2 & 4. Mô phỏng lấy dữ liệu & Xử lý lỗi</h2>
+        <p>Bấm nút để mô phỏng gọi API (delay 2s). Có 20% tỉ lệ xảy ra lỗi.</p>
+        <button id="btn-fetch">Bắt đầu lấy dữ liệu</button>
+        <div id="fetch-log" class="log">Chờ lệnh...</div>
+    </div>
+
+    <div class="section">
+        <h2>3. Chain Promises (Xử lý nhiều bước)</h2>
+        <p>Quy trình: Lấy User &rarr; Lấy Order &rarr; Tính tổng tiền.</p>
+        <button id="btn-chain">Chạy quy trình Chain</button>
+        <div id="chain-log" class="log">Chờ lệnh...</div>
+    </div>
+
+    <div class="section">
+        <h2>5. Chuyển đổi Callback sang Promise</h2>
+        <p>Sử dụng hàm setTimeout truyền thống bọc trong Promise.</p>
+        <button id="btn-convert">Chạy hàm đã chuyển đổi</button>
+        <div id="convert-log" class="log">Chờ lệnh...</div>
+    </div>
+</div>
+
+<script>
+    // --- 1 & 4. Tạo Promise mô phỏng lấy dữ liệu & Mô phỏng lỗi ---
+    function mockFetchData() {
+        return new Promise((resolve, reject) => {
+            const success = Math.random() > 0.2; // 80% thành công
+            setTimeout(() => {
+                if (success) {
+                    resolve({ id: 1, name: "Quang Trường", role: "Student" });
+                } else {
+                    reject("LỖI: Kết nối server thất bại!");
+                }
+            }, 2000);
+        });
+    }
+
+    // --- 2. Sử dụng .then() và .catch() để xử lý ---
+    const btnFetch = document.getElementById('btn-fetch');
+    const fetchLog = document.getElementById('fetch-log');
+
+    btnFetch.addEventListener('click', () => {
+        fetchLog.textContent = "Đang lấy dữ liệu... (vui lòng chờ 2s)";
+        btnFetch.disabled = true;
+
+        mockFetchData()
+            .then((data) => {
+                fetchLog.textContent = `Thành công: ${JSON.stringify(data)}`;
+            })
+            .catch((error) => {
+                fetchLog.textContent = error;
+            })
+            .finally(() => {
+                btnFetch.disabled = false;
+            });
+    });
+
+    // --- 3. Chain Promises qua nhiều bước xử lý ---
+    function getUser() { return Promise.resolve({ uid: 101, username: "truong_tlu" }); }
+    function getOrders(uid) { return Promise.resolve(["Order 1", "Order 2"]); }
+
+    const btnChain = document.getElementById('btn-chain');
+    const chainLog = document.getElementById('chain-log');
+
+    btnChain.addEventListener('click', () => {
+        chainLog.textContent = "Bắt đầu quy trình...";
+        
+        getUser()
+            .then(user => {
+                chainLog.textContent += `\nBước 1: Lấy được User ${user.username}`;
+                return getOrders(user.uid); // Trả về promise tiếp theo
+            })
+            .then(orders => {
+                chainLog.textContent += `\nBước 2: Tìm thấy ${orders.length} đơn hàng.`;
+                return "Hoàn tất xử lý!";
+            })
+            .then(finalMsg => {
+                chainLog.textContent += `\nKết quả cuối: ${finalMsg}`;
+            })
+            .catch(err => {
+                chainLog.textContent = "Lỗi trong chuỗi: " + err;
+            });
+    });
+
+    // --- 5. Chuyển đổi Callback sang Promise (Promisify) ---
+    // Hàm callback truyền thống
+    function classicDelay(ms, callback) {
+        setTimeout(callback, ms);
+    }
+
+    // Chuyển đổi sang dạng Promise
+    function promiseDelay(ms) {
+        return new Promise(resolve => {
+            setTimeout(resolve, ms);
+        });
+    }
+
+    const btnConvert = document.getElementById('btn-convert');
+    const convertLog = document.getElementById('convert-log');
+
+    btnConvert.addEventListener('click', () => {
+        convertLog.textContent = "Bắt đầu delay 1.5s...";
+        
+        promiseDelay(1500).then(() => {
+            convertLog.textContent = "Hàm Promise (được chuyển từ Callback) đã hoàn thành!";
+        });
+    });
+</script>
+
+</body>
+</html>

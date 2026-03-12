@@ -36,30 +36,30 @@
 
             console.log("%c--- THỰC HÀNH SELECTING ELEMENTS ---", "color: blue; font-weight: bold; font-size: 14px;");
 
-            // 1. Sử dụng querySelector để chọn một phần tử bất kỳ [cite: 52, 138]
+            // 1. Sử dụng querySelector để chọn một phần tử bất kỳ 
             // Chọn phần tử đầu tiên khớp với class .description
             let firstElement = document.querySelector('.description'); 
             console.log("1. Kết quả querySelector('.description'):", firstElement);
 
 
-            // 2. Sử dụng querySelectorAll để lấy danh sách các phần tử [cite: 65, 139]
-            // Trả về một NodeList chứa tất cả các phần tử có class .description [cite: 66]
+            // 2. Sử dụng querySelectorAll để lấy danh sách các phần tử 
+            // Trả về một NodeList chứa tất cả các phần tử có class .description 
             let allElements = document.querySelectorAll('.description');
             console.log("2. Kết quả querySelectorAll('.description'):", allElements);
             
-            // Thử lặp qua danh sách bằng forEach [cite: 67, 73]
+            // Thử lặp qua danh sách bằng forEach 
             allElements.forEach((el, index) => {
-                console.log(`   > Nội dung phần tử ${index + 1}: ${el.textContent}`); // [cite: 91]
+                console.log(`   > Nội dung phần tử ${index + 1}: ${el.textContent}`); 
             });
 
 
-            // 3. Sử dụng getElementById để truy cập trực tiếp qua ID [cite: 74, 140]
-            // Phương thức này có hiệu năng cực kỳ nhanh [cite: 76]
+            // 3. Sử dụng getElementById để truy cập trực tiếp qua ID 
+            // Phương thức này có hiệu năng cực kỳ nhanh 
             let titleElement = document.getElementById('main-title');
             console.log("3. Kết quả getElementById('main-title'):", titleElement);
 
 
-            // 4. Kiểm tra kết quả trong tab Console của DevTools [cite: 141]
+            // 4. Kiểm tra kết quả trong tab Console của DevTools 
             console.log("%c>>> Tất cả các phần tử đã được log thành công!", "color: green; font-style: italic;");
         });
     </script>
