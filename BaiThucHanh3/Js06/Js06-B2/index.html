@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành JS DOM - Modifying Elements</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; background-color: #f0f2f5; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+        h1 { color: #1a73e8; }
+        #content-box { border: 2px dashed #ccc; padding: 15px; margin: 15px 0; min-height: 50px; }
+        ul { background: #fffde7; padding: 20px; border-radius: 5px; }
+        li { color: #d32f2f; font-weight: bold; }
+        .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        button { padding: 8px 16px; cursor: pointer; border: none; border-radius: 4px; background: #1a73e8; color: white; }
+        button:hover { background: #1557b0; }
+        .btn-delete { background: #ea4335; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="main-title">Tiêu đề gốc</h1>
+
+        <div id="content-box">Vùng chứa HTML</div>
+
+        <ul id="my-list">
+            <li>Phần tử ban đầu 1</li>
+        </ul>
+
+        <div class="controls">
+            <button onclick="modifyContent()">Chạy Modifying</button>
+            <button class="btn-delete" onclick="removeElement()">Xóa tiêu đề</button>
+        </div>
+    </div>
+
+    <script>
+        function modifyContent() {
+            // --- 1. Thay đổi văn bản tiêu đề bằng textContent ---
+            // textContent an toàn hơn vì chỉ xử lý văn bản thuần[cite: 91, 92, 93].
+            const title = document.querySelector('#main-title');
+            title.textContent = "Tiêu đề đã được thay đổi!"; 
+
+            // --- 2. Chèn thêm mã HTML vào một div bằng innerHTML ---
+            // innerHTML cho phép trình duyệt parse các thẻ HTML bên trong chuỗi[cite: 95, 96].
+            const box = document.querySelector('#content-box');
+            box.innerHTML = "<p style='color: blue;'>Nội dung này được chèn bằng <strong>innerHTML</strong></p>";
+
+            // --- 3. Sử dụng createElement để tạo một thẻ <li> mới ---
+            // Bước 1: Create - Tạo element trong bộ nhớ[cite: 106, 108, 110].
+            const newLi = document.createElement('li');
+            
+            // Bước 2: Configure - Thiết lập nội dung[cite: 107, 111, 112].
+            newLi.textContent = "Phần tử mới tạo từ JS";
+            newLi.style.color = "green";
+
+            // --- 4. Append phần tử vừa tạo vào danh sách <ul> ---
+            // Bước 3: Append - Thêm vào cây DOM thực tế[cite: 107, 116, 117].
+            const list = document.querySelector('#my-list');
+            list.appendChild(newLi);
+            
+            console.log("Đã thực hiện các thay đổi nội dung và cấu trúc!");
+        }
+
+        function removeElement() {
+            // --- 5. Thử xóa một phần tử bằng phương thức remove() ---
+            // Đây là phương thức hiện đại, gọn gàng để xóa node[cite: 118, 119, 120].
+            const title = document.querySelector('#main-title');
+            if (title) {
+                title.remove();
+                console.log("Đã xóa tiêu đề!");
+            } else {
+                alert("Tiêu đề không còn tồn tại để xóa.");
+            }
+        }
+    </script>
+</body>
+</html>

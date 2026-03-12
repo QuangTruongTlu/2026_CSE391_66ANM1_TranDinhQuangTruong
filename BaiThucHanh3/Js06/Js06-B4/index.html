@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành Event Listeners</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; padding: 50px; background-color: #f8f9fa; }
+        .box-container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 400px; transition: 0.3s; }
+        
+        /* Class để toggle màu nền */
+        .bg-active { background-color: #d1e7dd; border: 2px solid #0f5132; }
+        
+        #interactive-title { color: #333; margin-bottom: 20px; }
+        
+        .hover-area { margin: 20px 0; padding: 30px; border: 2px dashed #bbb; border-radius: 10px; transition: 0.3s; cursor: pointer; }
+        
+        button { padding: 12px 24px; cursor: pointer; border: none; border-radius: 8px; background: #6c5ce7; color: white; font-weight: bold; font-size: 16px; }
+        button:hover { background: #5649c0; }
+        
+        .log-info { margin-top: 15px; font-size: 13px; color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <div class="box-container" id="main-card">
+        <h2 id="interactive-title">Sẵn sàng thực hiện</h2>
+        
+        <div id="hover-zone" class="hover-area">
+            Di chuột vào vùng này
+        </div>
+
+        <div class="controls">
+            <button id="btn-action">Click để tương tác</button>
+        </div>
+        
+        <p class="log-info">Kiểm tra Console (F12) để xem log chi tiết</p>
+    </div>
+
+    <script>
+        // Chọn các phần tử cần thiết
+        const mainBtn = document.getElementById('btn-action');
+        const title = document.getElementById('interactive-title');
+        const hoverZone = document.getElementById('hover-zone');
+        const card = document.getElementById('main-card');
+
+        // 1. Gán sự kiện click cho nút bấm & Thay đổi textContent
+        mainBtn.addEventListener('click', function() {
+            title.textContent = "Nội dung đã thay đổi!";
+            title.style.color = "#6c5ce7";
+            console.log("Listener 1: Đã đổi nội dung textContent.");
+        });
+
+        // 2. Thử nghiệm gán nhiều listeners khác nhau cho cùng 1 phần tử
+        // Listener thứ hai cho cùng nút bấm đó để Toggle class
+        mainBtn.addEventListener('click', () => {
+            card.classList.toggle('bg-active');
+            console.log("Listener 2: Đã Toggle class đổi màu nền.");
+        });
+
+        // 3. Lắng nghe sự kiện mouseenter
+        hoverZone.addEventListener('mouseenter', () => {
+            hoverZone.textContent = "Chuột đang ở bên trong!";
+            hoverZone.style.borderColor = "#6c5ce7";
+            hoverZone.style.backgroundColor = "#f0f0ff";
+            console.log("Sự kiện: Mouse Enter.");
+        });
+
+        // 4. Lắng nghe sự kiện mouseleave
+        hoverZone.addEventListener('mouseleave', () => {
+            hoverZone.textContent = "Chuột đã rời khỏi!";
+            hoverZone.style.borderColor = "#bbb";
+            hoverZone.style.backgroundColor = "transparent";
+            console.log("Sự kiện: Mouse Leave.");
+        });
+
+    </script>
+</body>
+</html>

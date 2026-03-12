@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành Attributes và Classes</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 40px; background-color: #f0f2f5; display: flex; justify-content: center; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 400px; text-align: center; transition: 0.3s; }
+        
+        /* Class để thực hành toggle/add/remove */
+        .highlight-mode { background-color: #e3f2fd; border: 2px solid #2196f3; transform: scale(1.03); }
+        
+        img { width: 100%; border-radius: 10px; margin-bottom: 20px; border: 1px solid #ddd; }
+        .controls { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        
+        button { padding: 12px; cursor: pointer; border: none; border-radius: 8px; background: #2196f3; color: white; font-weight: bold; }
+        button:hover { background: #1976d2; }
+        
+        #status-msg { margin-top: 20px; font-weight: bold; min-height: 24px; }
+        .success { color: #2e7d32; }
+        .warning { color: #d32f2f; }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="my-card">
+        <img id="profile-img" src="https://via.placeholder.com/350x200?text=Anh+Ban+Dau" alt="Original">
+        
+        <h3 id="user-title">Giao diện thực hành DOM</h3>
+        
+        <div class="controls">
+            <button id="btn-change-attr">Thay đổi Ảnh & Alt (Properties)</button>
+            <button id="btn-toggle-class">Bật/Tắt Highlight (Toggle)</button>
+            <button id="btn-check-class">Kiểm tra sự tồn tại (Contains)</button>
+            <button id="btn-reset">Xóa Class & Reset (Remove)</button>
+        </div>
+
+        <p id="status-msg"></p>
+    </div>
+
+    <script>
+        // Chọn các phần tử cần tác động
+        const card = document.getElementById('my-card');
+        const profileImg = document.getElementById('profile-img');
+        const statusMsg = document.getElementById('status-msg');
+
+        // 1 & 2. Thay đổi thuộc tính và sử dụng Dot Notation
+        document.getElementById('btn-change-attr').addEventListener('click', () => {
+            // Thay đổi trực tiếp qua property (Dot notation)
+            profileImg.src = "https://via.placeholder.com/350x200?text=Anh+Da+Thay+Doi";
+            profileImg.alt = "Mô tả ảnh mới";
+            
+            statusMsg.textContent = "Đã cập nhật thuộc tính ảnh thành công!";
+            statusMsg.className = "success";
+        });
+
+        // 3 & 4. Sử dụng classList.toggle để bật/tắt trạng thái
+        document.getElementById('btn-toggle-class').addEventListener('click', () => {
+            card.classList.toggle('highlight-mode');
+            
+            statusMsg.textContent = "Đã thực hiện Toggle class.";
+            statusMsg.className = "";
+        });
+
+        // 5. Kiểm tra sự tồn tại của class bằng classList.contains
+        document.getElementById('btn-check-class').addEventListener('click', () => {
+            const hasClass = card.classList.contains('highlight-mode');
+            
+            if (hasClass) {
+                statusMsg.textContent = "KẾT QUẢ: Thẻ đang CÓ class 'highlight-mode'";
+                statusMsg.className = "success";
+            } else {
+                statusMsg.textContent = "KẾT QUẢ: Thẻ KHÔNG CÓ class 'highlight-mode'";
+                statusMsg.className = "warning";
+            }
+        });
+
+        // 6. Thêm/Xóa class bằng classList.add / remove
+        document.getElementById('btn-reset').addEventListener('click', () => {
+            // Xóa class highlight-mode nếu đang có
+            card.classList.remove('highlight-mode');
+            
+            // Reset ảnh về ban đầu
+            profileImg.src = "https://via.placeholder.com/350x200?text=Anh+Ban+Dau";
+            
+            statusMsg.textContent = "Đã xóa class và Reset trạng thái.";
+            statusMsg.className = "";
+        });
+
+    </script>
+</body>
+</html>
