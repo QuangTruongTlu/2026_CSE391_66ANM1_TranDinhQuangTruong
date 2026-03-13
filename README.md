@@ -1,60 +1,119 @@
-<div align="center">
+<p align="center">
+  <img src="https://inkythuatso.com/uploads/images/2021/12/logo-dai-hoc-thuy-loi-inkythuatso-converted-01-23-08-44-48.jpg" width="180">
+</p>
 
-# 🌐 NỀN TẢNG LẬP TRÌNH WEB
+<h1 align="center">
+🌐 CSE391 - Nền Tảng Phát Triển Web
+</h1>
 
-✨ *Frontend Web Development Fundamentals* ✨
+<p align="center">
+Repository bài tập & thực hành môn <b>CSE391</b> – Nền Tảng Phát Triển Web
+</p>
 
-</div>
+<p align="center">
 
----
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
 
-## 👨‍🎓 Thông tin sinh viên
-- **👤 Họ tên:** Trần Đình Quang Trường  
-- **🏫 Lớp:** 66ANM1  
-- **📘 Môn học:** Nền tảng lập trình web  
-
----
-
-## 📌 Giới thiệu
-Repository này được tạo ra nhằm **lưu trữ toàn bộ quá trình học tập, thực hành và bài tập** của môn  
-**Nền tảng lập trình web**.
-
-Đây cũng là nơi tổng hợp các kiến thức quan trọng giúp người học **xây dựng giao diện website (Front-end)** từ những bước cơ bản nhất.
-
----
-
-## 🎯 Mục tiêu môn học
-- ✅ Hiểu được **cách hoạt động của một trang web**
-- ✅ Nắm vững **kiến thức nền tảng Front-end**
-- ✅ Rèn luyện tư duy xây dựng giao diện web
-- ✅ Có khả năng tự tạo **website tĩnh cơ bản**
+</p>
 
 ---
 
-## 🛠️ Công nghệ & Kiến thức
-- 🌱 **HTML** – Xây dựng cấu trúc trang web  
-- 🎨 **CSS** – Thiết kế và bố cục giao diện  
-- ⚡ **JavaScript** – Tạo tương tác cho website  
+# 👋 Giới thiệu
+
+Repository này được tạo ra nhằm **lưu trữ toàn bộ bài tập, bài thực hành và kiến thức** trong môn học:
+
+> **CSE391 – Nền Tảng Phát Triển Web**  
+> Trường **Đại học Thủy Lợi**
+
+Mục đích của repository là ghi lại **quá trình học tập và thực hành phát triển web Front-end**, từ những kiến thức cơ bản đến các công nghệ hiện đại được sử dụng trong phát triển web.
 
 ---
 
-## 📂 Nội dung trong Repo
-- 📁 Bài học theo từng buổi  
-- 📁 Bài tập thực hành  
-- 📁 Ví dụ minh họa  
-- 📁 Mini project (nếu có)  
+# 👨‍🎓 Thông tin sinh viên
+
+- **Họ tên:** Trần Đình Quang Trường  
+- **Lớp:** 66ANM1  
+- **Môn học:** CSE391 - Nền Tảng Phát Triển Web  
+- **Giảng viên:** Tạ Chí Hiếu  
 
 ---
 
-## 📝 Ghi chú
-📌 Repository sẽ được **cập nhật liên tục** trong suốt quá trình học.  
-📌 Phù hợp cho người **mới bắt đầu học lập trình web Front-end**.
+# 🧰 Công nghệ & Kiến thức sử dụng
+
+Trong quá trình học, repository này sử dụng các công nghệ phổ biến trong phát triển web:
+
+### 🌐 HTML5
+HTML (HyperText Markup Language) là ngôn ngữ dùng để **xây dựng cấu trúc của trang web**.  
+HTML giúp định nghĩa các thành phần như tiêu đề, đoạn văn, hình ảnh, bảng, biểu mẫu và các thành phần nội dung khác trên website.
+
+### 🎨 CSS3
+CSS (Cascading Style Sheets) được sử dụng để **thiết kế giao diện và bố cục trang web**.  
+CSS giúp định dạng màu sắc, font chữ, khoảng cách, layout và hỗ trợ **responsive design** để website hiển thị tốt trên nhiều thiết bị.
+
+### ⚡ JavaScript
+JavaScript là ngôn ngữ lập trình giúp **tạo sự tương tác cho website**.  
+Thông qua JavaScript, trang web có thể xử lý sự kiện, thay đổi nội dung động, thao tác DOM và tạo trải nghiệm người dùng tốt hơn.
+
+### 🅱 Bootstrap
+Bootstrap là **CSS Framework** giúp xây dựng giao diện web nhanh chóng với hệ thống **grid layout**, các **component có sẵn** và hỗ trợ **responsive design**.
+
+### ⚛ ReactJS
+ReactJS là **thư viện JavaScript** dùng để xây dựng **giao diện người dùng (UI)** theo mô hình **component-based**.  
+React giúp phát triển các ứng dụng web hiện đại như **Single Page Application (SPA)** một cách hiệu quả.
 
 ---
 
-<div align="center">
+# 🎯 Mục tiêu học tập
 
-🚀 *Happy Coding & Keep Learning!* 🚀  
+Sau khi hoàn thành môn học, sinh viên có thể:
 
-</div>
+- Hiểu cách **một website hoạt động**
+- Nắm vững kiến thức **HTML / CSS / JavaScript**
+- Xây dựng **giao diện web cơ bản**
+- Sử dụng **framework và thư viện phổ biến**
+- Rèn luyện kỹ năng **Git & GitHub**
 
+---
+
+# 📂 Nội dung Repository
+
+Repository bao gồm:
+
+- 📁 Bài học theo từng tuần
+- 📁 Bài thực hành trên lớp
+- 📁 Bài tập về nhà
+- 📁 Ví dụ minh họa
+- 📁 Mini Project (nếu có)
+
+---
+
+# 🚀 Hướng dẫn chạy bài
+
+## Cách 1 — Mở trực tiếp bằng trình duyệt
+
+1. Tải repository về máy  
+2. Mở file `.html`  
+3. Chọn **Open with → Chrome / Edge / Firefox**
+
+---
+
+## Cách 2 — Sử dụng VS Code (khuyên dùng)
+
+1. Mở project bằng **VS Code**  
+2. Cài extension **Live Server**  
+3. Chuột phải file HTML  
+4. Chọn **Open with Live Server**
+
+---
+
+# 📌 Ghi chú
+
+- Repository phục vụ mục đích **học tập**
+- Các bài tập sẽ được **cập nhật liên tục theo từng buổi học**
+- Code có thể được **tối ưu hoặc chỉnh sửa theo thời gian**
+
+---
