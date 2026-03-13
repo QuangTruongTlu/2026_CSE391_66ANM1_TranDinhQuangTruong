@@ -91,25 +91,6 @@ Repository bao gồm:
 
 ---
 
-# 🚀 Hướng dẫn chạy bài
-
-## Cách 1 — Mở trực tiếp bằng trình duyệt
-
-1. Tải repository về máy  
-2. Mở file `.html`  
-3. Chọn **Open with → Chrome / Edge / Firefox**
-
----
-
-## Cách 2 — Sử dụng VS Code (khuyên dùng)
-
-1. Mở project bằng **VS Code**  
-2. Cài extension **Live Server**  
-3. Chuột phải file HTML  
-4. Chọn **Open with Live Server**
-
----
-
 # 📌 Ghi chú
 
 - Repository phục vụ mục đích **học tập**
